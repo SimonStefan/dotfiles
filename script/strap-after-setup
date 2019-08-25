@@ -1,0 +1,5 @@
+#!/bin/sh
+# Run by Strap after installing Brewfile dependencies
+
+rbenv install 2.6.3
+rbenv global 2.6.3
