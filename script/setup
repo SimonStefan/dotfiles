@@ -20,6 +20,8 @@ then
   VSCODE="$APPDATA/Code/User"
 fi
 
+NOW=$(date +"%Y.%m.%d.%H.%M.%S")
+
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
@@ -32,6 +34,12 @@ for DOTFILE in *; do
 
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
+
+  if [ -e $HOMEFILE ] && [ ! -L $HOMEFILE ]; then
+    mkdir -p ~/.dotfiles_backup/$NOW
+    mv $HOMEFILE ~/.dotfiles_backup/$NOW/.$DOTFILE
+    echo "backup saved as ~/.dotfiles_backup/$NOW/.$DOTFILE"
+  fi
 
   if [ $UNIX ]
   then
