@@ -1,5 +1,12 @@
 #!/bin/sh
 # Run by Strap after installing Brewfile dependencies
 
+# Install and set latest ruby version
 rbenv install 2.6.3
 rbenv global 2.6.3
+
+# Always show Library folder
+chflags nohidden ~/Library/
+
+# Prefer tabs when opening documents always
+defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleWindowTabbingMode -string "always"
