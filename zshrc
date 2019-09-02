@@ -68,7 +68,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git brew gradle osx adb git-flow mvn)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,3 +97,24 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+eval "$(rbenv init -)"
+
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval `ssh-agent`
+  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add
+
+# fastlane
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+# Android
+export ANDROID_HOME=$HOME"/Library/Android/sdk"
+export PATH="${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
+
