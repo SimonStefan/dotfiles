@@ -1,6 +1,12 @@
 #!/bin/sh
 # Run by Strap after installing Brewfile dependencies
 
+# Install oh-my-zsh
+export ZSH=~/.oh-my-zsh
+if [ ! -d $ZSH ]; then
+  git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
+fi
+
 # Install and set latest ruby version
 rbenv install 2.6.3
 rbenv global 2.6.3
@@ -10,3 +16,8 @@ chflags nohidden ~/Library/
 
 # Prefer tabs when opening documents always
 defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleWindowTabbingMode -string "always"
+
+# Generate SSH-Keys with prefered security
+if [ ! -f ~/.ssh/id_rsa ] && [ ! -f ~/.ssh/_id_rsa ] && [ ! -f ~/.ssh/id_ed25519 ]; then
+    ssh-keygen -o -a 100 -t ed25519
+fi

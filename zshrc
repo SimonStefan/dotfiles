@@ -107,7 +107,7 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add
+ssh-add -l > /dev/null || grep -slR "PRIVATE" ~/.ssh/ | xargs ssh-add
 
 # fastlane
 export LC_ALL=en_US.UTF-8
