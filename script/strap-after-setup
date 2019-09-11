@@ -18,6 +18,7 @@ chflags nohidden ~/Library/
 defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleWindowTabbingMode -string "always"
 
 # Generate SSH-Keys with prefered security
+mkdir ~/.ssh || true
 if [ ! -f ~/.ssh/id_rsa ] && [ ! -f ~/.ssh/_id_rsa ] && [ ! -f ~/.ssh/id_ed25519 ]; then
     ssh-keygen -o -a 100 -t ed25519
 fi

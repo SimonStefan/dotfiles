@@ -1,3 +1,5 @@
+tap "homebrew/cask-font"
+
 # specify a directory to install
 cask_args appdir: '/Applications'
 
@@ -25,6 +27,9 @@ cask "qlmarkdown"
 cask "qlstephen"
 cask "quicklook-json"
 cask "quicklookapk"
+
+# cask-font
+cask "font-meslo-for-powerline"
 
 # Mac App Store
 mas "1Password 7", id: 1333542190
