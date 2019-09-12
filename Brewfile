@@ -32,5 +32,5 @@ cask "quicklookapk"
 cask "font-meslo-for-powerline"
 
 # Mac App Store
-mas "1Password 7", id: 1333542190
-mas "Slack", id: 803453959
+# mas "1Password 7", id: 1333542190
+# mas "Slack", id: 803453959
